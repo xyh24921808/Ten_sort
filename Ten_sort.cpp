@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
 #include<stdlib.h>
-#include<time.h>
+#include<string.g>
 void Swap(int* a, int* b)
 {
 	int tmp = *a;
@@ -334,11 +334,12 @@ void Countsort(int* a, int n)
 	}
 
 	int ragert = max - min + 1;
-	int* count = (int*)calloc(0,sizeof(int) * ragert);
+	int* count = (int*)malloc(sizeof(int) * ragert);
 	if (count == NULL)
 	{
 		exit(-1);
 	}
+	memset(count,0,sizeof(int)*ragert);
 	for (int i = 0; i < n; i++)
 	{
 		count[a[i] - min]++;
