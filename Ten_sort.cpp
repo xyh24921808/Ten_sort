@@ -317,6 +317,42 @@ void heapsort(int* a, int n)
 	}
 }
 /////////////////////////
+void Countsort(int* a, int n)
+{
+	int max = a[0];
+	int min = a[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] > max)
+			max = a[i];
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] < min)
+			min = a[i];
+	}
+
+	int ragert = max - min + 1;
+	int* count = (int*)calloc(0,sizeof(int) * ragert);
+	if (count == NULL)
+	{
+		exit(-1);
+	}
+	for (int i = 0; i < n; i++)
+	{
+		count[a[i] - min]++;
+	}
+	int j = 0;
+	for (int i = 0; i < ragert; i++)
+	{
+		while (count[i]--)
+		{
+			a[j++] = i + min;
+		}
+	}
+}
+/////////////////////////
 void Testsortob()
 {
 	int num[] = { 4,6,2,3,1,5,8,7,9,10};
@@ -324,7 +360,6 @@ void Testsortob()
 	heapsort(num, numSize);
 	arrprintf(num, numSize);
 }
-
 int main(void)
 {
 	Testsortob();
