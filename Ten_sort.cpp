@@ -48,7 +48,7 @@ void Shellsort(int* a, int n)
 		gap = gap / 2;
 		for (int i = 0; i < n - gap; i++)
 		{
-			int end = 0;
+			int end = i;
 			int tmp = a[end + gap];
 			while (end >= 0)
 			{
